@@ -6,6 +6,8 @@ except:
     exit()
 count=0
 for line in fhand:
-    if line.startswith('Subject'):
+    if line.startswith('mylcd'):
         count = count + 1
+        line = line.rstrip()
+        print line
 print "there were ", count, 'subject lines in ', fname
