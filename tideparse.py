@@ -4,7 +4,7 @@ import time
 from urllib2 import urlopen
 hand=open('tide.txt')
 count =0
-req = urlopen('https://www.worldtides.info/api?extremes&lat=39.428450&lon=-74.495708&key=a8fc6f5e-62e1-42d3-813b-927efb1782bd')
+req = urlopen('https://www.worldtides.info/api?extremes&lat=39.428450&lon=-74.495708&key=your_api_key')
 parsed_json = json.load(req)
 ti = str(parsed_json["station"])
 print
