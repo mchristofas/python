@@ -8,7 +8,7 @@ from urllib2 import urlopen
 #hand=open('tide.txt')
 mylcd = I2C_LCD_driver.lcd()
 count =0
-req = urlopen('https://www.worldtides.info/api?extremes&lat=39.378&lon=-74.504&key=a8fc6f5e-62e1-42d3-813b-927efb1782bd')
+req = urlopen('https://www.worldtides.info/api?extremes&lat=39.378&lon=-74.504&key=you-api-key')
 parsed_json = json.load(req)
 ti = str(parsed_json["station"])
 
