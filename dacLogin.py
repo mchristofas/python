@@ -12,13 +12,17 @@ with open('daclist.txt', 'r') as f:
         port = 22
         username = 'acc4000d'
         password = 'ippv4000'
-
+        
 
         cmd = 'hostname'
         cmda = 'uptime'
         cmdb= 'cat /etc/SuSE-release'
-        cmdc = 'cat /etc/redhat-release'
-
+        cmdc = """accisql acc4000 mrc <<SQL
+select keylist_filename from keylist_descriptor where active_keylist = 1
+go
+SQL
+""" 
+        
 
         try:
             ssh = paramiko.SSHClient()
@@ -29,7 +33,7 @@ with open('daclist.txt', 'r') as f:
             outlines = stdout.readlines()
             resp = ''.join(outlines)
             resp = resp.strip('\n')
-            print
+            print 
             print ip, " ", resp
 
             stdin, stdout, stderr = ssh.exec_command(cmda)
@@ -52,3 +56,5 @@ with open('daclist.txt', 'r') as f:
 
         except:
             print "not online\n"
+        ssh.close()
+
